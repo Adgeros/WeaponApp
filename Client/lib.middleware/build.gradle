@@ -1,6 +1,28 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'me.tatarka.retrolambda'
 android {
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG", "false"
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 日志开关
+            if(LOG.toBoolean()){
+                buildConfigField "boolean", "LOG", "true"
+            }else{
+                buildConfigField "boolean", "LOG", "false"
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         minSdkVersion 21
@@ -11,26 +33,27 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "boolean", "LOG_DEBUG", "true" // 日志开关
-        }
-        debug {
-            buildConfigField "boolean", "LOG_DEBUG", "true"  // 日志开关
-        }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
+
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:25.1.0'
     compile 'com.orhanobut:logger:1.13'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
-    compile 'com.android.support:appcompat-v7:25.1.0+'
+
+    compile project(':lib.mvvm')
 }

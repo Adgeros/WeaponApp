@@ -1,11 +1,11 @@
 package com.weapon.joker.app.mine.login;
 
+import com.weapon.joker.app.mine.login.dataBean.LoginRequestModel;
 import com.weapon.joker.lib.net.Api;
 import com.weapon.joker.lib.net.ApiConvertUtil;
 import com.weapon.joker.lib.net.HostType;
-import com.weapon.joker.lib.net.model.LoginModel;
-import com.weapon.joker.lib.net.model.LoginRequestModel;
-import com.weapon.joker.lib.net.model.RegisterModel;
+import com.weapon.joker.lib.net.bean.MineBean.LoginModel;
+import com.weapon.joker.lib.net.bean.MineBean.RegisterModel;
 import com.weapon.joker.lib.net.rx.RxSchedulers;
 
 import io.reactivex.Observable;

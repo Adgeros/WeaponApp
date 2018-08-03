@@ -1,8 +1,8 @@
 package com.weapon.joker.lib.net;
 
-import com.weapon.joker.lib.net.bean.MessageBean;
-import com.weapon.joker.lib.net.model.LoginModel;
-import com.weapon.joker.lib.net.model.RegisterModel;
+import com.weapon.joker.lib.net.bean.HomeBean.HomeBean;
+import com.weapon.joker.lib.net.bean.MineBean.LoginModel;
+import com.weapon.joker.lib.net.bean.MineBean.RegisterModel;
 
 import java.util.Map;
 
@@ -19,15 +19,19 @@ import retrofit2.http.QueryMap;
  */
 
 public interface ApiManager {
-    @GET ("ajax.php?a=fy&f=auto&t=auto&w=hello%20world")
-    Observable<MessageBean> getCall();
+
+    /**
+     * 首页数据请求
+     */
+    @GET("home_data.json")
+    Observable<HomeBean> getHomeListData();
 
     /**
      * 登陆
      * params : name->用户名, password->密码
      * 在有多个字段的情况下，推荐使用这种方式
      */
-    @GET ("user/login")
+    @GET("user/login")
     Observable<LoginModel> login(@QueryMap Map<String, Object> params);
 
 
@@ -38,7 +42,6 @@ public interface ApiManager {
      */
     @GET ("user/register")
     Observable<RegisterModel> register(
-            @Query ("name") String name,
+            @Query("name") String name,
             @Query ("password") String password);
-
 }

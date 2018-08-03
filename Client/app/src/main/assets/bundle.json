@@ -2,24 +2,28 @@
   "version": "1.0.0",
   "bundles": [
     {
-      "uri": "lib.middleware",
-      "pkg": "com.weapon.joker.lib.middleware"
-    },
-    {
       "uri": "lib.mvvm",
       "pkg": "com.weapon.joker.lib.mvvm"
     },
     {
-      "uri": "lib.net",
-      "pkg": "com.weapon.joker.lib.net"
+      "uri": "lib.middleware",
+      "pkg": "com.weapon.joker.lib.middleware"
     },
     {
       "uri": "lib.style",
       "pkg": "com.weapon.joker.lib.style"
     },
     {
+      "uri": "lib.net",
+      "pkg": "com.weapon.joker.lib.net"
+    },
+    {
       "uri": "lib.view",
       "pkg": "com.weapon.joker.lib.view"
+    },
+    {
+      "uri":"lib.video",
+      "pkg":"com.weapon.joker.lib.video"
     },
     {
       "uri": "main",

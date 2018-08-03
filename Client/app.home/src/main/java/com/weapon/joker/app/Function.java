@@ -1,5 +1,9 @@
 package com.weapon.joker.app;
-import com.weapon.joker.app.home.*;
+
+import com.weapon.joker.app.home.HomeItemViewModel;
+import com.weapon.joker.app.home.HomeItemViewPagerViewModel;
+import com.weapon.joker.app.home.HomeViewModel;
+import com.weapon.joker.app.home.MainFragment;
 
 /**
  * Function 业务索引
@@ -9,12 +13,18 @@ import com.weapon.joker.app.home.*;
  */
 
 interface Function {
-    /**
-     * {@link HomeActivity 首页}
-     */
+
     void activity();
 
+    /**
+     * {@link MainFragment 首页fragment}
+     */
     void fragment();
 
-    void View();
+    /**
+     * {@link HomeViewModel 首页ViewModel}
+     * {@link HomeItemViewModel 首页Item的ViewModel}
+     * {@link HomeItemViewPagerViewModel 首页ViewPager的ViewModel}
+     */
+    void viewModel();
 }

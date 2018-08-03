@@ -22,10 +22,8 @@ import com.weapon.joker.lib.mvvm.common.BaseActivity;
 import com.weapon.joker.lib.net.Api;
 import com.weapon.joker.lib.net.BaseObserver;
 import com.weapon.joker.lib.net.HostType;
-import com.weapon.joker.lib.net.model.RegisterModel;
+import com.weapon.joker.lib.net.bean.MineBean.RegisterModel;
 import com.weapon.joker.lib.net.rx.RxSchedulers;
-
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * class：   Client
@@ -65,6 +63,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         ShowEnterAnimation();
         mFloatingActionButton.setOnClickListener(this);
         mBtRegister.setOnClickListener(this);
+    }
+
+    @Override
+    public int getBR() {
+        return 0;
     }
 
     /**
@@ -219,7 +222,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void registerRequest(String userName, String password) {
         Api.getDefault(HostType.MINE)
            .register(userName, password)
-           .subscribeOn(Schedulers.io())
            .compose(RxSchedulers.<RegisterModel>io_main())
            .subscribe(new BaseObserver<RegisterModel>() {
                @Override

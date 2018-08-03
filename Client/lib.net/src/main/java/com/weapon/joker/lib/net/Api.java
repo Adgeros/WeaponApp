@@ -47,6 +47,7 @@ public class Api {
             retrofitManager = new Api(hostType);
             sRetrofitManager.put(hostType, retrofitManager);
         }
+        retrofitManager.mApiManager = retrofitManager.mRetrofit.create(ApiManager.class);
         return retrofitManager.mApiManager;
     }
 
@@ -78,7 +79,7 @@ public class Api {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(ApiConstants.getHost(hostType))
                 .build();
-        mApiManager = mRetrofit.create(ApiManager.class);
     }
+
 
 }
